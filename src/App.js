@@ -19,7 +19,6 @@ function App() {
   return (
     <Router>
       <CssBaseline />
-      {isAuthenticated ? (
         <Box sx={{ display: 'flex' }}>
           <Sidebar />
           <Box
@@ -35,13 +34,7 @@ function App() {
             </Routes>
           </Box>
         </Box>
-      ) : (
-        <Routes>
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
-      )}
+      
     </Router>
   );
 }
