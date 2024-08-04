@@ -9,6 +9,7 @@ import Contacto from './loading-page/contactos';
 import ClientHome from './loading-page/client_home';
 import Loading from './components/loading';
 import Home from './components/home';
+import Formulario from './components/event/form';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/cliente" element={<ClientHome />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/cliente/event/:id" element={<Formulario />} />
       </Routes>
     </Router>
   );
