@@ -35,7 +35,7 @@ const Formulario = () => {
             try {
                 const response = await axios.put(
                     `https://api-digitalevent.onrender.com/api/asientos/${id}`, 
-                    { estado: "Ocupado" }
+                    { estado: "Reservado" }
                 );
                 getData();
             } catch (err) {
