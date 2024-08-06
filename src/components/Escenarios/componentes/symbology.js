@@ -7,7 +7,7 @@ const Symbology = () => {
     return ( 
         <div className="custom-container">
         <div className="row mb-3 align-items-center">
-            <div className="col-3 icon">
+            <div className="col-3 icon1">
                 <img src={img1} alt="Asiento No disponible" />
             </div>
             <div className="col-9">
@@ -16,7 +16,7 @@ const Symbology = () => {
         </div>
         <div className="divider"></div>
         <div className="row mb-3 align-items-center">
-            <div className="col-3 icon">
+            <div className="col-3 icon1">
                 <img src={img2} alt="Asiento Disponible" />
             </div>
             <div className="col-9">
@@ -25,7 +25,7 @@ const Symbology = () => {
         </div>
         <div className="divider"></div>
         <div className="row align-items-center">
-            <div className="col-3 icon">
+            <div className="col-3 icon1">
                 <img src={img3} alt="Asiento Ocupado" />
             </div>
             <div className="col-9">
