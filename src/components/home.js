@@ -1,15 +1,21 @@
 import React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
+import Sidebar from './sidebar/sidebar';
+import Navbar from './sidebar/navbar';
 
 const Home = () => {
   return (
-    <Container style={styles.container}>
-      <Typography variant="h4" component="h1" style={styles.title}>
-        Bienvenido a Digital Event Hub
-      <h6> <br /> Aqui iran los componentes para la vista de los resultados</h6>
-
-      </Typography>
-    </Container>
+    <Box sx={{ display: 'flex' }}>
+      <Navbar />
+        <Container>
+        <Typography variant="h4" component="h1" style={styles.title}>
+            Bienvenido a Digital Event Hub
+            <Typography variant="h6" component="h6">
+              <br /> Aquí irán los componentes para la vista de los resultados
+            </Typography>
+          </Typography>
+        </Container>
+    </Box>
   );
 };
 
