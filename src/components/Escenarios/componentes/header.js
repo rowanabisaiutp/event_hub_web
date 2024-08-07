@@ -1,14 +1,15 @@
 import React from 'react';
 import "../../../style.css";
-const header = () => {
-    return ( 
-        <div class="header">
-        <img src="https://e.radio-grpp.io/normal/2016/08/17/553455_221714.png" alt="Imagen difuminada" />
-        <div class="header-text">
-            Consolida tu negocio <span class="subtext">Evento público</span>
+
+const Header = ({ eventData }) => {
+    return (
+        <div className="header">
+            <img src={eventData?.imagen_url || "https://e.radio-grpp.io/normal/2016/08/17/553455_221714.png"} alt="Imagen del evento" />
+            <div className="header-text">
+                {eventData?.nombre_evento || "Consolida tu negocio"} <span className="subtext">Evento {eventData?.tipo_evento || "Evento público"}</span>
+            </div>
         </div>
-        </div>
-     );
+    );
 }
- 
-export default header;
+
+export default Header;

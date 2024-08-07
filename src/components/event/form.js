@@ -1,11 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-
 import "../../style.css";
 import Symbology from '../Escenarios/componentes/symbology'
 import Header from '../Escenarios/componentes/header'
-import Escenario1 from '../Escenarios/Scenary1/Escenario1'
+import Escenario1 from '../Escenarios/Scenary1/Index'
 import Escenario3 from '../Escenarios/Scenary3'
 import Escenario4 from '../Escenarios/Scenary4'
 import axios from 'axios';
@@ -14,6 +13,7 @@ const Formulario = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
+    const [eventData, setEventData] = useState();
     const [selectedSeats, setSelectedSeats] = useState([]);
 
     const getData = async () => {
@@ -23,6 +23,15 @@ const Formulario = () => {
                 `https://api-digitalevent.onrender.com/api/escenarios/${id}`
             );
             setData(response.data);
+
+            const eventsResponse = await axios.get(
+                `https://api-digitalevent.onrender.com/api/eventos/events`
+            );
+
+            const matchedEvent = eventsResponse.data.find(event => event.evento_id === response.data.evento_id);
+            setEventData(matchedEvent);
+
+            console.log(response.data);
         } catch (err) {
             console.log(err);
         } finally {
@@ -52,7 +61,7 @@ const Formulario = () => {
 
     return (
         <Fragment>
-            <Header />
+            <Header eventData={eventData} />
             <div className="main-container">
                 <div className="content-container">
                     <div className="left-column" style={{ display: "flex" }}>
