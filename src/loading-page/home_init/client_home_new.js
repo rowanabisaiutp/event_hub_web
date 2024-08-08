@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ClientNavbar from './client_navbar';
+import ClientNavbarHome from './navbar_home';
 
 // Estilización personalizada para las tarjetas
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -32,7 +32,7 @@ const CardContainer = styled('div')({
     margin: '10px', // Añadir margen alrededor de cada tarjeta
 });
 
-const ClientHomeEvent = () => {
+const ClientHomeEventNew = () => {
     const [events, setEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredEvents, setFilteredEvents] = useState([]);
@@ -95,12 +95,12 @@ const ClientHomeEvent = () => {
     };
 
     const handleCardClick = (event) => {
-        navigate(`/event/${event.evento_id}`);
+        navigate(`/evento/home/${event.evento_id}`);
     };
 
     return (
         <div>
-            <ClientNavbar />
+            <ClientNavbarHome />
             <div style={{ padding: '20px', maxWidth: '1200px', margin: 'auto' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Eventos Disponibles</h1>
                 
@@ -279,4 +279,4 @@ const ClientHomeEvent = () => {
     );
 };
 
-export default ClientHomeEvent;
+export default ClientHomeEventNew;

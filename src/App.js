@@ -10,6 +10,9 @@ import ClientHome from './loading-page/client_home';
 import Loading from './components/loading';
 import Home from './components/home';
 import Formulario from './components/event/form';
+import EventDetails from './loading-page/event_detail';
+import EventInformation from './loading-page/home_init/event_details_home';
+import ClientHomeEventNew from './loading-page/home_init/client_home_new';
 
 const App = () => {
   return (
@@ -23,8 +26,13 @@ const App = () => {
         <Route path="/contacto" element={<Contacto />} />
         {/* Rutas para navegar dentro del home */}
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/home/eventos" element={<Eventos />} /> */}
+        <Route path="/event/:eventId" element={<EventDetails />} />
         <Route path="/cliente/event/:id" element={<Formulario />} />
+        {/* Nueva ruta */}
+        <Route path="/evento/home/:eventId" element={<EventInformation />} />
+        <Route path="/cliente/home" element={<ClientHomeEventNew />} />
+
+
       </Routes>
     </Router>
   );
