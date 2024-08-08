@@ -1,6 +1,11 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Container, Button, styled, Card, CardContent, Grid, Fab } from '@mui/material';
-import SeatIcon from '@mui/icons-material/EventSeat'; // Icono para el botón flotante
+import { AppBar, Toolbar, Typography, Container, Grid, Fab, styled, Card, CardContent } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import EventIcon from '@mui/icons-material/Event';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import SeatIcon from '@mui/icons-material/EventSeat';
 
 // Estilos para el primer Navbar
 const CustomNavbarContainer = styled(AppBar)(({ theme, backgroundImage }) => ({
@@ -21,7 +26,7 @@ const CustomNavbarContainer = styled(AppBar)(({ theme, backgroundImage }) => ({
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Superposición oscura
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         zIndex: 1,
     },
     '& > div': {
@@ -44,6 +49,9 @@ const CustomInfo = styled(Typography)(({ theme }) => ({
     fontSize: '1rem',
     fontWeight: 'medium',
     marginBottom: theme.spacing(1),
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1),
 }));
 
 const CustomMapCard = styled(Card)(({ theme }) => ({
@@ -67,20 +75,29 @@ const FloatingButton = styled(Fab)(({ theme }) => ({
 
 const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy }) => {
     const handleSeatSelection = () => {
-        // Lógica para navegar a la ruta de selección de asientos
-        window.location.href = "/cliente/event/10"; // Cambia esto a la ruta correcta si es necesario
+        window.location.href = "/cliente/event/10";
     };
 
     return (
         <>
             <CustomNavbarContainer position="static" backgroundImage={imageUrl}>
                 <Toolbar>
-                    <CustomInfo variant="body1">Organizado por {organizer}</CustomInfo>
+                    <CustomInfo variant="body1">
+                        <PersonIcon /> Organizado por {organizer}
+                    </CustomInfo>
                     <CustomTitle variant="h1">{title}</CustomTitle>
-                    <CustomInfo variant="body1">Fecha: {date} a las {time}</CustomInfo>
-                    <CustomInfo variant="body1">Te esperamos en el {location}</CustomInfo>
-                    <CustomInfo variant="body1">Evento {eventType} de {category}</CustomInfo>
-                    <CustomInfo variant="body1">Autorizado por: {authorizedBy}</CustomInfo>
+                    <CustomInfo variant="body1">
+                        <CalendarTodayIcon /> {date} a las {time}
+                    </CustomInfo>
+                    <CustomInfo variant="body1">
+                        <LocationOnIcon /> {location}
+                    </CustomInfo>
+                    <CustomInfo variant="body1">
+                        <EventIcon /> Evento {eventType} de {category}
+                    </CustomInfo>
+                    <CustomInfo variant="body1">
+                        <VerifiedUserIcon /> {authorizedBy}
+                    </CustomInfo>
                     <br />
                 </Toolbar>
             </CustomNavbarContainer>
@@ -127,6 +144,3 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
 };
 
 export default EventInformationNavbar;
-
-
-//
