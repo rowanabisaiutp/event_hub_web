@@ -5,6 +5,7 @@ import EventInformationNavbar from './event_navbar_home'; // Asegúrate de que l
 const EventInformation = () => { // Nuevo nombre para el componente
     const { eventId } = useParams();
     const [event, setEvent] = useState(null);
+    const [scenary, setScenary] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -17,6 +18,16 @@ const EventInformation = () => { // Nuevo nombre para el componente
                 const data = await response.json();
                 const selectedEvent = data.find(event => event.evento_id === parseInt(eventId));
                 setEvent(selectedEvent);
+
+                const responseEscenarios = await fetch('https://api-digitalevent.onrender.com/api/escenarios');
+                if (!responseEscenarios.ok) {
+                    return
+                    // throw new Error(`Error ${responseEscenarios.status}: ${responseEscenarios.statusText}`);
+                }
+                const responseEscenariosJSON = await responseEscenarios.json();
+                const selectedScenary = responseEscenariosJSON.find((item)=>item.evento_id === selectedEvent.evento_id);
+                setScenary(selectedScenary);
+
             } catch (error) {
                 setError(error.message);
                 console.error('Error fetching event details:', error);
@@ -30,7 +41,7 @@ const EventInformation = () => { // Nuevo nombre para el componente
         return <div>Error: {error}</div>;
     }
 
-    if (!event) {
+    if (!event || !scenary) {
         return <div>Loading...</div>;
     }
 
@@ -46,6 +57,7 @@ const EventInformation = () => { // Nuevo nombre para el componente
                 eventType={event.tipo_evento}
                 organizer={event.organizador_nombre}
                 authorizedBy={event.autorizado_nombre}
+                idScenary={scenary.escenario_id}
             />
         </div>
     );

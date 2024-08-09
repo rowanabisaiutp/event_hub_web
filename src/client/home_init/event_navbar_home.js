@@ -74,9 +74,9 @@ const FloatingButton = styled(Fab)(({ theme }) => ({
 }));
 
 
-const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy }) => {
+const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy, idScenary }) => {
     const handleSeatSelection = () => {
-        window.location.href = "/cliente/event/10";
+        window.location.href = `/cliente/event/${idScenary}`;
     };
 
     useEffect(() => {
