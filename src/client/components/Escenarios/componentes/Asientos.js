@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../../style.css";
+import "../../../../style.css";
 
 const Asientos = ({ id, status, setSelectedSeats  = undefined, number=0 }) => {
 

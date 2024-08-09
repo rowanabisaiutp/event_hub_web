@@ -156,6 +156,7 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
                 </Grid>
             </Container>
 
+            {/* Boton para navegar al eventpo */}
             <FloatingButton color="primary" aria-label="select seat" onClick={handleSeatSelection}>
                 <SeatIcon />
             </FloatingButton>

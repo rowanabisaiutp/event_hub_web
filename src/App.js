@@ -7,12 +7,12 @@ import QuienesSomos from './loading-page/quienes-somos';
 import Servicios from './loading-page/servicio';
 import Contacto from './loading-page/contactos';
 import ClientHome from './loading-page/client_home';
-import Loading from './components/loading';
-import Home from './components/home';
-import Formulario from './components/event/form';
+import Loading from './client/components/loading';
+import Home from './client/components/home';
+import Formulario from './client/components/event/form';
 import EventDetails from './loading-page/event_detail';
-import EventInformation from './loading-page/home_init/event_details_home';
-import ClientHomeEventNew from './loading-page/home_init/client_home_new';
+import EventInformation from './client/home_init/event_details_home';
+import ClientHomeEventNew from './client/home_init/client_home_new';
 
 const App = () => {
   return (
