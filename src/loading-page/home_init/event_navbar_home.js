@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import { AppBar, Toolbar, Typography, Container, Grid, Fab, styled, Card, CardContent } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -73,10 +73,44 @@ const FloatingButton = styled(Fab)(({ theme }) => ({
     zIndex: 1000,
 }));
 
+
 const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy }) => {
     const handleSeatSelection = () => {
         window.location.href = "/cliente/event/10";
     };
+
+    useEffect(() => {
+        const initMap = () => {
+            const map = new window.google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 }, // Latitud y Longitud por defecto
+                zoom: 15
+            });
+
+            const geocoder = new window.google.maps.Geocoder();
+            geocoder.geocode({ address: location }, (results, status) => {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    new window.google.maps.Marker({
+                        map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    console.error('Geocode no fue exitoso debido a: ' + status);
+                }
+            });
+        };
+
+        if (window.google && window.google.maps) {
+            initMap();
+        } else {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCkJwrcOuqFszjXYAJDDepaFA3dGkble88`;
+            script.async = true;
+            script.defer = true;
+            script.onload = initMap;
+            document.head.appendChild(script);
+        }
+    }, [location]);
 
     return (
         <>
@@ -107,18 +141,7 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
                     <Grid item xs={12} sm={6}>
                         <CustomMapCard>
                             <CardContent>
-                                <div style={{ width: '100%', height: '100%' }}>
-                                    <iframe
-                                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCkJwrcOuqFszjXYAJDDepaFA3dGkble88&q=${encodeURIComponent(location)}`}
-                                        width="100%"
-                                        height="400"
-                                        frameBorder="0"
-                                        style={{ border: 0 }}
-                                        allowFullScreen=""
-                                        aria-hidden="false"
-                                        tabIndex="0"
-                                    ></iframe>
-                                </div>
+                                <div id="map" style={{ width: '100%', height: '400px' }}></div>
                             </CardContent>
                         </CustomMapCard>
                     </Grid>
@@ -133,7 +156,6 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
                 </Grid>
             </Container>
 
-            {/* Botón flotante */}
             <FloatingButton color="primary" aria-label="select seat" onClick={handleSeatSelection}>
                 <SeatIcon />
             </FloatingButton>
