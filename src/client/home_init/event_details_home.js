@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventInformationNavbar from './event_navbar_home'; // Asegúrate de que la ruta sea correcta
 
-const EventInformation = () => { // Nuevo nombre para el componente
+const EventInformation = () => {
     const { eventId } = useParams();
     const [event, setEvent] = useState(null);
     const [scenary, setScenary] = useState(null);
+    const [authorizedBy, setAuthorizedBy] = useState('');
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await fetch('https://api-digitalevent.onrender.com/api/eventos/events');
+                // Fetch event details
+                const response = await fetch('https://api-digitalevent.onrender.com/api/events/get/approved');
                 if (!response.ok) {
                     throw new Error(`Error ${response.status}: ${response.statusText}`);
                 }
@@ -19,14 +21,24 @@ const EventInformation = () => { // Nuevo nombre para el componente
                 const selectedEvent = data.find(event => event.evento_id === parseInt(eventId));
                 setEvent(selectedEvent);
 
+                // Fetch scenary details
                 const responseEscenarios = await fetch('https://api-digitalevent.onrender.com/api/escenarios');
                 if (!responseEscenarios.ok) {
-                    return
-                    // throw new Error(`Error ${responseEscenarios.status}: ${responseEscenarios.statusText}`);
+                    return;
                 }
                 const responseEscenariosJSON = await responseEscenarios.json();
-                const selectedScenary = responseEscenariosJSON.find((item)=>item.evento_id === selectedEvent.evento_id);
+                const selectedScenary = responseEscenariosJSON.find((item) => item.evento_id === selectedEvent.evento_id);
                 setScenary(selectedScenary);
+
+                // Fetch authorizedBy user details
+                if (selectedEvent && selectedEvent.autorizado_por) {
+                    const responseUser = await fetch(`https://api-digitalevent.onrender.com/api/users/${selectedEvent.autorizado_por}`);
+                    if (!responseUser.ok) {
+                        throw new Error(`Error ${responseUser.status}: ${responseUser.statusText}`);
+                    }
+                    const userData = await responseUser.json();
+                    setAuthorizedBy(userData.nombre);
+                }
 
             } catch (error) {
                 setError(error.message);
@@ -48,15 +60,14 @@ const EventInformation = () => { // Nuevo nombre para el componente
     return (
         <div>
             <EventInformationNavbar
-                title={event.nombre_evento}
+                title={event.evento_nombre}
                 imageUrl={event.imagen_url}
                 date={`${new Date(event.fecha_inicio).toLocaleDateString()} - ${new Date(event.fecha_termino).toLocaleDateString()}`}
                 time={event.hora}
                 location={event.ubicacion}
-                category={event.categoria_nombre}
+                category={event.categoria}
                 eventType={event.tipo_evento}
-                organizer={event.organizador_nombre}
-                authorizedBy={event.autorizado_nombre}
+                authorizedBy={authorizedBy}
                 idScenary={scenary.escenario_id}
             />
         </div>

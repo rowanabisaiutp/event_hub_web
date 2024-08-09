@@ -74,7 +74,7 @@ const FloatingButton = styled(Fab)(({ theme }) => ({
 }));
 
 
-const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy, idScenary }) => {
+const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, authorizedBy, idScenary }) => {
     const handleSeatSelection = () => {
         window.location.href = `/cliente/event/${idScenary}`;
     };
@@ -116,9 +116,6 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
         <>
             <CustomNavbarContainer position="static" backgroundImage={imageUrl}>
                 <Toolbar>
-                    <CustomInfo variant="body1">
-                        <PersonIcon /> Organizado por {organizer}
-                    </CustomInfo>
                     <CustomTitle variant="h1">{title}</CustomTitle>
                     <CustomInfo variant="body1">
                         <CalendarTodayIcon /> {date} a las {time}
