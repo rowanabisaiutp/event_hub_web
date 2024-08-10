@@ -62,7 +62,7 @@ const ClientHomeNuevo = () => {
     };
 
     const handleEventClick = (eventId) => {
-        navigate(`/events/${eventId}`);
+        navigate(`/evento/${eventId}`);
     };
 
     return (
