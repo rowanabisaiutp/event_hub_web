@@ -10,7 +10,7 @@ const EventDetail = () => {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await fetch('https://api-digitalevent.onrender.com/api/eventos/events');
+                const response = await fetch('https://api-digitalevent.onrender.com/api/events/get/img');
                 if (!response.ok) {
                     throw new Error(`Error ${response.status}: ${response.statusText}`);
                 }
@@ -37,7 +37,8 @@ const EventDetail = () => {
     return (
         <div>
             <EventNavbar
-                title={event.nombre_evento}
+                title={event.evento_nombre}
+                description={event.descripcion}
                 imageUrl={event.imagen_url}
                 date={`${new Date(event.fecha_inicio).toLocaleDateString()} - ${new Date(event.fecha_termino).toLocaleDateString()}`}
                 time={event.hora}

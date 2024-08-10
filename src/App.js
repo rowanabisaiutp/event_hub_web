@@ -10,9 +10,10 @@ import ClientHome from './loading-page/client_home';
 import Loading from './client/components/loading';
 import Home from './client/components/home';
 import Formulario from './client/components/event/form';
-import EventDetails from './loading-page/event_detail';
+import EventDetail from './loading-page/event_detail';
 import EventInformation from './client/home_init/event_details_home';
 import ClientHomeEventNew from './client/home_init/client_home_new';
+import ClientHomeNuevo from './loading-page/client_home_otro';
 
 const App = () => {
   return (
@@ -26,11 +27,12 @@ const App = () => {
         <Route path="/contacto" element={<Contacto />} />
         {/* Rutas para navegar dentro del home */}
         <Route path="/home" element={<Home />} />
-        <Route path="/event/:eventId" element={<EventDetails />} />
+        <Route path="/evento/:eventId" element={<EventDetail />} />
         <Route path="/cliente/event/:id" element={<Formulario />} />
         {/* Nueva ruta */}
         <Route path="/evento/home/:eventId" element={<EventInformation />} />
         <Route path="/cliente/home" element={<ClientHomeEventNew />} />
+        <Route path="/cliente/home/nuevo" element={<ClientHomeNuevo />} />
 
 
       </Routes>

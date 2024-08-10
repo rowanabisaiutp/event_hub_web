@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Container, Grid, Fab, styled, Card, CardContent } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -73,9 +73,9 @@ const FloatingButton = styled(Fab)(({ theme }) => ({
     zIndex: 1000,
 }));
 
-
 const EventInformationNavbar = ({ title, imageUrl, date, time, location, category, eventType, authorizedBy, idScenary }) => {
     const handleSeatSelection = () => {
+        console.log('Redirecting to:', `/cliente/event/${idScenary}`); // Agrega este log para depuración
         window.location.href = `/cliente/event/${idScenary}`;
     };
 
@@ -89,6 +89,7 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
             const geocoder = new window.google.maps.Geocoder();
             geocoder.geocode({ address: location }, (results, status) => {
                 if (status === 'OK') {
+                    console.log('Geocode results:', results); // Agrega este log para depuración
                     map.setCenter(results[0].geometry.location);
                     new window.google.maps.Marker({
                         map,
@@ -153,7 +154,7 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
                 </Grid>
             </Container>
 
-            {/* Boton para navegar al eventpo */}
+            {/* Boton para navegar al evento */}
             <FloatingButton color="primary" aria-label="select seat" onClick={handleSeatSelection}>
                 <SeatIcon />
             </FloatingButton>

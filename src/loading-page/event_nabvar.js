@@ -56,10 +56,7 @@ const InfoCard = styled(Card)(({ theme }) => ({
     marginLeft: theme.spacing(2), // Add space between the map and the info card
 }));
 
-// Estilos para el segundo Navbar con gradiente
-
-const EventNavbar = ({ title, imageUrl, date, time, location, category, eventType, organizer, authorizedBy }) => {
-
+const EventNavbar = ({ title, description, imageUrl, date, time, location, category, eventType, organizer, authorizedBy }) => {
     useEffect(() => {
         const initMap = () => {
             const map = new window.google.maps.Map(document.getElementById('map'), {
@@ -92,13 +89,13 @@ const EventNavbar = ({ title, imageUrl, date, time, location, category, eventTyp
             document.head.appendChild(script);
         }
     }, [location]);
+
     return (
         <>
             {/* Primer Navbar con fondo de imagen */}
             <NavbarContainer position="static" backgroundImage={imageUrl}>
-  
                 <Toolbar>
-                <Button
+                    <Button
                         color="inherit"
                         style={{ marginLeft: 'auto' }}
                         href="/cliente/home"
@@ -107,6 +104,8 @@ const EventNavbar = ({ title, imageUrl, date, time, location, category, eventTyp
                     </Button>
                     <Info variant="body1">Organizado por {organizer}</Info>
                     <Title variant="h1">{title}</Title>
+                    <p>Description: {description}</p>
+                    
                     <Info variant="body1">Fecha: {date} a las {time}</Info>
                     <Info variant="body1">Te esperamos en el {location}</Info>
                     <Info variant="body1">Evento {eventType} de {category}</Info>
@@ -114,28 +113,49 @@ const EventNavbar = ({ title, imageUrl, date, time, location, category, eventTyp
                     <br />
                 </Toolbar>
             </NavbarContainer>
-           
-
-            {/* Mapa y Tarjeta de Información */}
-            <Container style={{ marginTop: '16px' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <MapCard>
                             <CardContent>
-                            <div id="map" style={{ width: '100%', height: '400px' }}></div>
+                                <div id="map" style={{ width: '100%', height: '400px' }}></div>
                             </CardContent>
                         </MapCard>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <InfoCard>
-                            <CardContent>
-                                <Typography variant="h6">Información Adicional</Typography>
-                                <Typography variant="body2">Aquí puedes agregar más detalles o información adicional sobre el evento.</Typography>
-                            </CardContent>
+                        <CardContent>
+    <Typography variant="h6">Información Adicional</Typography>
+    <Typography variant="body2">
+        <strong>Título:</strong> {title}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Fecha:</strong> {date}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Hora:</strong> {time}
+    </Typography>
+    <Info variant="h1">{description}</Info>
+    <Typography variant="body2">
+        <strong>Ubicación:</strong> {location}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Categoría:</strong> {category}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Tipo de Evento:</strong> {eventType}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Organizado por:</strong> {organizer}
+    </Typography>
+    <Typography variant="body2">
+        <strong>Autorizado por:</strong> {authorizedBy}
+    </Typography>
+    {/* Aquí puedes agregar más detalles o información adicional sobre el evento. */}
+</CardContent>
+
                         </InfoCard>
                     </Grid>
                 </Grid>
-            </Container>
             <br />
             <hr />
         </>

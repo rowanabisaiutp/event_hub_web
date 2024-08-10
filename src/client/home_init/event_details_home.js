@@ -13,7 +13,7 @@ const EventInformation = () => {
         const fetchEventDetails = async () => {
             try {
                 // Fetch event details
-                const response = await fetch('https://api-digitalevent.onrender.com/api/events/get/approved');
+                const response = await fetch('https://api-digitalevent.onrender.com/api/events/get/img');
                 if (!response.ok) {
                     throw new Error(`Error ${response.status}: ${response.statusText}`);
                 }
