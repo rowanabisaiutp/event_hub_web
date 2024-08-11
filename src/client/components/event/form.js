@@ -66,7 +66,7 @@ const Formulario = () => {
                 <div className="content-container">
                     <div className="left-column" style={{ display: "flex" }}>
                         { !loading && data.forma === "Cuadrado" && <Escenario1 data={data} setSelectedSeats={setSelectedSeats}/> }
-                        { !loading && data.forma === "Triangulo" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats}/> }
+                        { !loading && data.forma === "Triangular" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats}/> }
                         { !loading && data.forma === "Redondo" && <Escenario4 data={data} setSelectedSeats={setSelectedSeats}/> }
                     </div>
                     <div className="right-column">
