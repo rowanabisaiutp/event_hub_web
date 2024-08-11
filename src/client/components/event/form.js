@@ -25,7 +25,7 @@ const Formulario = () => {
             setData(response.data);
 
             const eventsResponse = await axios.get(
-                `https://api-digitalevent.onrender.com/api/eventos/events`
+                `https://api-digitalevent.onrender.com/api/events/get/approved`
             );
 
             const matchedEvent = eventsResponse.data.find(event => event.evento_id === response.data.evento_id);
