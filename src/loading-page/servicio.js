@@ -20,7 +20,7 @@ const Servicios = () => {
             <header>
                 <div className="logo-container">
                     <img src={logo} alt="Logo" width="145" height="145" />
-                    <h1>Contatanos</h1>
+                    <h1>Servicios</h1>
                 </div>
                 <nav>
                     <ul>
@@ -29,6 +29,7 @@ const Servicios = () => {
                         <li><a className="link" href="/quienes-somos">Quienes Somos</a></li>
                         <li><a className="link" href="/servicios">Servicios</a></li>
                         <li><a className="link" href="/contacto">Contacto</a></li>
+                        <li><a className="link" href="/cliente">Eventos</a></li>
                         <li><a href="loading" className="login-button">Iniciar sesión</a></li>
                     </ul>
                 </nav>
