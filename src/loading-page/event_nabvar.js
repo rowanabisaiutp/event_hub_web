@@ -94,7 +94,7 @@ const EventNavbar = ({ title, description, imageUrl, date, time, location, categ
         <>
             {/* Primer Navbar con fondo de imagen */}
             <NavbarContainer position="static" backgroundImage={imageUrl}>
-                <Toolbar>
+                <Toolbar style={{width:'90%'}}>
                     <Button
                         color="inherit"
                         style={{ marginLeft: 'auto' }}
@@ -113,15 +113,15 @@ const EventNavbar = ({ title, description, imageUrl, date, time, location, categ
                     <br />
                 </Toolbar>
             </NavbarContainer>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                        <MapCard>
-                            <CardContent>
-                                <div id="map" style={{ width: '100%', height: '400px' }}></div>
-                            </CardContent>
-                        </MapCard>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+            <Grid container spacing={2} style={{width:'90%'}}>
+                <Grid item xs={12} sm={6}>
+                    <MapCard>
+                        <CardContent>
+                            <div id="map" style={{ width: '100%', height: '400px' }}></div>
+                        </CardContent>
+                    </MapCard>
+                </Grid>
+            <Grid item xs={12} sm={6}>
                         <InfoCard>
                         <CardContent>
     <Typography variant="h6">Información Adicional</Typography>

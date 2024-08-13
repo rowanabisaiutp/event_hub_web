@@ -116,7 +116,7 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
     return (
         <>
             <CustomNavbarContainer position="static" backgroundImage={imageUrl}>
-                <Toolbar>
+                <Toolbar style={{width:'90%'}}>
                     <CustomTitle variant="h1">{title}</CustomTitle>
                     <CustomInfo variant="body1">
                         <CalendarTodayIcon /> {date} a las {time}
@@ -134,25 +134,25 @@ const EventInformationNavbar = ({ title, imageUrl, date, time, location, categor
                 </Toolbar>
             </CustomNavbarContainer>
 
-            <Container style={{ marginTop: '16px' }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                        <CustomMapCard>
-                            <CardContent>
-                                <div id="map" style={{ width: '100%', height: '400px' }}></div>
-                            </CardContent>
-                        </CustomMapCard>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CustomInfoCard>
-                            <CardContent>
-                                <Typography variant="h6">Información Adicional</Typography>
-                                <Typography variant="body2">Aquí puedes agregar más detalles o información adicional sobre el evento.</Typography>
-                            </CardContent>
-                        </CustomInfoCard>
-                    </Grid>
+            
+            <Grid container spacing={2} style={{width:'90%'}}>
+                <Grid item xs={12} sm={6}>
+                    <CustomMapCard>
+                        <CardContent>
+                            <div id="map" style={{ width: '100%', height: '400px' }}></div>
+                        </CardContent>
+                    </CustomMapCard>
                 </Grid>
-            </Container>
+                <Grid item xs={12} sm={6}>
+                    <CustomInfoCard>
+                        <CardContent>
+                            <Typography variant="h6">Información Adicional</Typography>
+                            <Typography variant="body2">Aquí puedes agregar más detalles o información adicional sobre el evento.</Typography>
+                        </CardContent>
+                    </CustomInfoCard>
+                </Grid>
+            </Grid>
+            
 
             {/* Boton para navegar al evento */}
             <FloatingButton color="primary" aria-label="select seat" onClick={handleSeatSelection}>
