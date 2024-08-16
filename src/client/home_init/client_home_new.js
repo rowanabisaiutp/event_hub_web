@@ -12,6 +12,7 @@ const ClientHomeEventNew = () => {
     const [eventTypes, setEventTypes] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedEventType, setSelectedEventType] = useState('');
+    const [user, setUser] = useState(null);
 
     const filterRef = useRef(null);
     const navigate = useNavigate();
@@ -65,9 +66,36 @@ const ClientHomeEventNew = () => {
         navigate(`/evento/home/${eventId}`);
     };
 
+    useEffect(() => {
+        const userData = localStorage.getItem("user");
+        if (userData) {
+          setUser(JSON.parse(userData));
+        } else {
+          navigate("/login"); // Redirige al login si no hay datos del usuario
+        }
+      }, [navigate]);
+    
+      const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login");
+      };
+
     return (
         <div>
             <ClientNavbarHome />
+              {user ? (
+               <div>
+                <h2>Bienvenido, {user.nombre}!</h2>
+                <p>Email: {user.email}</p>
+                <p>Teléfono: {user.telefono}</p>
+                <p>Apellido: {user.last_name}</p>
+                <p>tu rol: {user.rol_id}</p>
+                <button onClick={handleLogout}>Cerrar Sesión</button>
+            </div>
+            ) : (
+            <p>Cargando...</p>
+            )}
             <div style={{ padding: '30px',marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333', fontSize: '2em', fontWeight: 'bold' }}>Eventos Digital Event Hub:</h1>
 
