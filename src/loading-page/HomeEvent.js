@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import ClientNavbar from './client_navbar';
+import NavbarHomeEvent from './NavbarHomeEvent';
 
-const ClientHomeNuevo = () => {
+const HomeEvent = () => {
     const [events, setEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredEvents, setFilteredEvents] = useState([]);
@@ -67,7 +67,7 @@ const ClientHomeNuevo = () => {
 
     return (
         <div>
-            <ClientNavbar />
+            <NavbarHomeEvent />
             <div style={{ padding: '30px',marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333', fontSize: '2em', fontWeight: 'bold' }}>Eventos Digital Event Hub:</h1>
 
@@ -187,4 +187,4 @@ const ClientHomeNuevo = () => {
     );
 };
 
-export default ClientHomeNuevo;
+export default HomeEvent;

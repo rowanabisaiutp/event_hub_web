@@ -30,7 +30,7 @@ const Servicios = () => {
                         <li><a className="link" href="/servicios">Servicios</a></li>
                         <li><a className="link" href="/contacto">Contacto</a></li>
                         <li><a className="link" href="/cliente">Eventos</a></li>
-                        <li><a href="loading" className="login-button">Iniciar sesión</a></li>
+                        <li><a href="login" className="login-button">Iniciar sesión</a></li>
                     </ul>
                 </nav>
             </header>

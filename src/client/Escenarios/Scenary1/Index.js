@@ -1,6 +1,6 @@
 import React from 'react';
 import Asientos from '../componentes/Asientos';
-import "../../../../style.css";
+import "../../../style.css";
 
 const Escenario1 = ({ data, setSelectedSeats }) => {
     const seats = data.asientos;

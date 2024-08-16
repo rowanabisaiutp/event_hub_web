@@ -2,14 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../../style.css";
-import Symbology from '../Escenarios/componentes/symbology'
-import Header from '../Escenarios/componentes/header'
-import Escenario1 from '../Escenarios/Scenary1/Index'
-import Escenario3 from '../Escenarios/Scenary3'
-import Escenario4 from '../Escenarios/Scenary4'
+import Symbology from './symbology'
+import Header from './header'
+import Escenario1 from '../Scenary1/Index'
+import Escenario3 from '../Scenary3'
+import Escenario4 from '../Scenary4'
 import axios from 'axios';
 
-const Formulario = () => {
+const Escenarios = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
@@ -79,4 +79,4 @@ const Formulario = () => {
     );
 }
 
-export default Formulario;
+export default Escenarios;

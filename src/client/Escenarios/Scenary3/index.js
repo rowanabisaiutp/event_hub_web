@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import "../../../../style.css";
+import "../../../style.css";
 import Asientos from '../componentes/Asientos'
 import Symbology from '../componentes/symbology'
 import Header from '../componentes/header'

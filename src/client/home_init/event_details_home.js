@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventInformationNavbar from './event_navbar_home'; // Asegúrate de que la ruta sea correcta
 
-const EventInformation = () => {
+const EventDetailClient = () => {
     const { eventId } = useParams();
     const [event, setEvent] = useState(null);
     const [scenary, setScenary] = useState(null);
@@ -74,4 +74,4 @@ const EventInformation = () => {
     );
 };
 
-export default EventInformation;
+export default EventDetailClient;
