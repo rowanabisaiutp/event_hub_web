@@ -13,7 +13,6 @@ import Formulario from './client/components/event/form';
 import EventDetail from './loading-page/event_detail';
 import EventInformation from './client/home_init/event_details_home';
 import ClientHomeEventNew from './client/home_init/client_home_new';
-import ClientHomeNuevo from './loading-page/client_home_otro';
 
 const App = () => {
   return (
@@ -32,7 +31,6 @@ const App = () => {
         {/* Nueva ruta */}
         <Route path="/evento/home/:eventId" element={<EventInformation />} />
         <Route path="/cliente/home" element={<ClientHomeEventNew />} />
-        <Route path="/cliente/home/nuevo" element={<ClientHomeNuevo />} />
 
 
       </Routes>

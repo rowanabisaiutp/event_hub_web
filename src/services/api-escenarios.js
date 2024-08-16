@@ -14,3 +14,4 @@ export const loginAuth = async (email, contrasena) => {
 };
 
 // Puedes agregar más funciones aquí si es necesario (por ejemplo, registro, logout, etc.)
+// 9932322199

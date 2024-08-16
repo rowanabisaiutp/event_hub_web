@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import ClientNavbar from './client_navbar';
+import Navbar from './navbar';
 
 const ClientHomeNuevo = () => {
     const [events, setEvents] = useState([]);
@@ -67,8 +67,8 @@ const ClientHomeNuevo = () => {
 
     return (
         <div>
-            <ClientNavbar />
-            <div style={{ padding: '30px',marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
+            <Navbar />
+            <div style={{ padding: '30px',marginTop: '30px'}}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333', fontSize: '2em', fontWeight: 'bold' }}>Eventos Digital Event Hub:</h1>
 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', position: 'relative' }}>
@@ -89,16 +89,6 @@ const ClientHomeNuevo = () => {
                                 fontSize: '1em'
                             }}
                         />
-                        <FaSearch
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                right: '40px',
-                                transform: 'translateY(-50%)',
-                                color: '#6D3089',
-                                fontSize: '1.2em'
-                            }}
-                        />
                     </div>
                     <button
                         onClick={toggleFilters}
@@ -113,7 +103,7 @@ const ClientHomeNuevo = () => {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginLeft: '10px',
+                            marginLeft: '-50px',
                             fontSize: '1em'
                         }}
                     >
