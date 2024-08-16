@@ -98,7 +98,7 @@ const EventNavbar = ({ title, description, imageUrl, date, time, location, categ
                     <Button
                         color="inherit"
                         style={{ marginLeft: 'auto' }}
-                        href="/cliente/home"
+                        href="/registro"
                     >
                         Registrarse
                     </Button>

@@ -13,7 +13,7 @@ const Loading = () => {
   const handleContinueClick = () => {
     setIsNavigating(true); // Inicia la animación
     setTimeout(() => {
-      navigate('/cliente'); // Navega después de la animación
+      navigate('/login'); // Navega después de la animación
     }, 500); // Tiempo debe coincidir con la duración de la animación
   };
 
