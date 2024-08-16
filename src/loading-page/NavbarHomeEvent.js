@@ -19,6 +19,7 @@ const NavbarHomeEvent = () => {
         <li><a className="link" href="/contacto">Contacto</a></li>
         <li><a className="link" href="/cliente">Eventos</a></li>
         <li><a href="login" className="login-button">Iniciar sesión</a></li>
+        <li><a href="registro" className="login-button">Registrarse</a></li>
       </ul>
     </nav>
   </header>
