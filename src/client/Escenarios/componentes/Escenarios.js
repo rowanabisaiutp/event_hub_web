@@ -82,6 +82,7 @@ const Escenarios = () => {
                 </div>
             </div>
             <button type="button" className="btn b-rigth" style={{ transform: 'translateY(40%)' }} onClick={handleSubmit}>Seleccionar</button>
+            
         </Fragment>
     );
 }
