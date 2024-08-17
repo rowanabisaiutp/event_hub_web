@@ -1,205 +1,112 @@
-import React, { useEffect } from 'react';
-import './Css/styles.css'; // Asegúrate de que tu CSS esté en esta ruta
-import './Css/quienes-somos.css'; // Asegúrate de que tu CSS esté en esta ruta
-
-// Importar imágenes desde la carpeta correcta
+import React from 'react';
+import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import './Css/styles.css'; // Asegúrate de que este archivo esté en la ruta correcta
+// Asegúrate de que este archivo esté en la ruta correcta
 import logo from './imagenes/logo-2.png';
-import twitterXLogo from './imagenes/Twitter-X-White-Logo-PNG-1.png';
+import twitterLogo from './imagenes/Twitter-X-White-Logo-PNG-1.png';
 import footerLogo from './imagenes/logo.jpg';
+import eventos1 from './imagenes/eventos/7.jpg';
+import eventos2 from './imagenes/eventos/1.webp';
+import eventos3 from './imagenes/eventos/4.jpg';
+import eventos4 from './imagenes/eventos/6.jpg';
+import eventos5 from './imagenes/eventos/2.webp';
+import eventos6 from './imagenes/eventos/3.webp';
+import eventos7 from './imagenes/eventos/5.jpeg';
+import eventos8 from './imagenes/eventos/8.jpeg';
 
-const QuienesSomos = () => {
-  useEffect(() => {
-    // Agregar Font Awesome
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
-    document.head.appendChild(link);
+const Servicios = () => {
+    return (
+        <div>
+            <header>
+                <div className="logo-container">
+                    <img src={logo} alt="Logo" width="145" height="145" />
+                    <h1>Servicios</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a className="link" href="/">Inicio</a></li>
+                        
+                        <li><a className="link" href="/quienes-somos">Quienes Somos</a></li>
+                        <li><a className="link" href="/servicios">Servicios</a></li>
+                        <li><a className="link" href="/contacto">Contacto</a></li>
+                        <li><a className="link" href="/cliente">Eventos</a></li>
+                        <li><a href="login" className="login-button">Iniciar sesión</a></li>
+                        <li><a href="registro" className="login-button">Registrarse</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-    // Agregar Bootstrap CSS
-    const bootstrapLink = document.createElement('link');
-    bootstrapLink.rel = 'stylesheet';
-    bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
-    document.head.appendChild(bootstrapLink);
+            <div className="main-content">
+                <div className="content-wrapper">
+                    <h1 className="typewriter-text" id="typewriter">Conoce Los Proximos<br />Eventos</h1>
+                    <h2>Eventos Públicos</h2>
+                    <div className="eventos">
+                        <img src={eventos1} alt="Evento Público 4" width="1000" />
+                        <img src={eventos2} alt="Evento Público 1" width="1000" />
+                        <img src={eventos3} alt="Evento Público 2" width="1000" />
+                        <img src={eventos4} alt="Evento Público 3" width="1000" />
+                    </div>
+                    <h2>Eventos Privados</h2>
+                    <div className="eventos">
+                        <img src={eventos5} alt="Evento Privado 1" width="1000" />
+                        <img src={eventos6} alt="Evento Privado 2" width="1000" />
+                        <img src={eventos7} alt="Evento Privado 3" width="1000" />
+                        <img src={eventos8} alt="Evento Público 1" width="1000" />
+                    </div>
+                </div>
+            </div>
 
-    // Agregar Google Fonts
-    const googleFontsLink = document.createElement('link');
-    googleFontsLink.rel = 'preconnect';
-    googleFontsLink.href = 'https://fonts.googleapis.com';
-    document.head.appendChild(googleFontsLink);
-
-    const googleFontsLink2 = document.createElement('link');
-    googleFontsLink2.rel = 'preconnect';
-    googleFontsLink2.href = 'https://fonts.gstatic.com';
-    googleFontsLink2.crossOrigin = 'true';
-    document.head.appendChild(googleFontsLink2);
-
-    const googleFonts = document.createElement('link');
-    googleFonts.href = 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
-    googleFonts.rel = 'stylesheet';
-    document.head.appendChild(googleFonts);
-
-    return () => {
-      document.head.removeChild(link);
-      document.head.removeChild(bootstrapLink);
-      document.head.removeChild(googleFontsLink);
-      document.head.removeChild(googleFontsLink2);
-      document.head.removeChild(googleFonts);
-    };
-  }, []);
-
-  return (
-    <div>
-      <header>
-        <div className="logo-container">
-          <img src={logo} alt="Logo" width="145" height="145" />
-          <h1 >Nosotros</h1>
+            <footer>
+                <div className="container-info">
+                    <div className="row justify-content-center">
+                        <div className="footer-section links col-6 col-sm-3">
+                            <h3>Enlaces</h3>
+                            <ul>
+                                <li><a href="/inicio">Inicio</a></li>
+                                <li><a href="/contacto">¿Quienes Somos?</a></li>
+                                <li><a href="/privacidad">Privacidad</a></li>
+                                <li><a href="/servicios">Términos y Condiciones</a></li>
+                            </ul>
+                        </div>
+                        <div className="footer-plataformas col-6 col-sm-3">
+                            <h5>Usa Digital Event Hub en</h5>
+                            <ul>
+                                <li><a href="/inicio">Android</a></li>
+                                <li><a href="/inicio">iPhone</a></li>
+                                <li><a href="/inicio">Mac/PC</a></li>
+                                <li><a href="/contacto">Digital Event Hub Web</a></li>
+                            </ul>
+                        </div>
+                        <div className="container-redes col-6 col-sm-3">
+                            <h4>Nuestras Redes Sociales</h4>
+                            <div className="social-icons">
+                                <a className="Facebook" href="#" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+                                <a className="Instagram" href="#" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                                <a className="Twitter-X" href="#" target="_blank" rel="noopener noreferrer">
+                                    <img src={twitterLogo} alt="X Logo" />
+                                </a>
+                                <a className="WhatsApp" href="#" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+                                <a className="Youtube" href="#" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+                            </div>
+                            <p>¡Síguenos en nuestras redes sociales para estar informado!</p>
+                        </div>
+                    </div>
+                    <div className="footer-info-web">
+                        <h3>Contacto</h3>
+                        <p>Email: contacto@ejemplo.com</p>
+                        <p>Teléfono: +34 123 456 789</p>
+                        <p>Dirección: Calle Ejemplo 123, Ciudad, País</p>
+                    </div>
+                </div>
+                <div className="footer-bottom">
+                    <div className="container-logo-footer text-center text-md-left mb-3 mb-md-0">
+                        <img className="logo-footer" src={footerLogo} alt="EventHub" width="110" height="110" />
+                    </div>
+                    <p>2024&copy; Digital Event Hub. Todos los derechos reservados, condiciones y políticas de privacidad.</p>
+                </div>
+            </footer>
         </div>
-        <nav>
-          <ul>
-            <li><a className="link" href="/">Inicio</a></li>
-            <li><a className="link" href="/quienes-somos">Quienes Somos</a></li>
-            <li><a className="link" href="/servicios">Servicios</a></li>
-            <li><a className="link" href="/contacto">Contacto</a></li>
-            <li><a className="link" href="/cliente">Eventos</a></li>
-            <li><a href="login" className="login-button">Iniciar sesión</a></li>
-            <li><a href="registro" className="login-button">Registrarse</a></li>
-          </ul>
-        </nav>
-      </header>
-      <br />
-      <div className="container-quienes-somos">
-        <div className="row justify-content-center">
-          <div className="col-6 col-sm-3">
-            <div className="imagen-logo">
-              <img src={logo} alt="logo" width="300" height="300" />
-            </div>
-          </div>
-          <div className="col-6 col-sm-3">
-            <div className="seccion-introduccion">
-              <h1>Introducción</h1>
-              <p>
-                Somos <b>Digital Event Hub</b>, una empresa dedicada a eventos públicos y privados, donde
-                mezclamos la tecnología y creatividad así como calidad, donde nuestra misión es crear un lugar
-                (<b>plataforma</b>) que permita volver más ágil y dinámico el crear un evento.
-              </p>
-              <p>
-                Donde creemos que la tecnología es una de las herramientas más poderosas y lo que buscamos es que
-                usted tenga el poder de aprovechar esta ventaja y que sea tu aliado y no tu enemigo, <b>¡y si no
-                sabes nada acerca de la tecnología no te preocupes nosotros mismos te podemos guiar!</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div className="historia">
-        <h2 className="titulo">Nuestra Historia</h2>
-        <br />
-        <div className="row justify-content-center">
-          <div className="col-6 col-sm-4 columna-img">
-            <div className="imagen-logo-2">
-              <img className="d-block mx-auto" src={logo} alt="logo" width="300" height="300" />
-            </div>
-          </div>
-          <div className="col-6 col-sm-4 columna">
-            <div className="parrafo1">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quidem cum amet culpa illum. Itaque
-                eos suscipit perspiciatis quaerat asperiores et at quasi aliquam quisquam. Perferendis tempore velit
-                cumque pariatur?
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum at totam dolore nisi eligendi nihil,
-                excepturi molestiae voluptas cumque quidem vitae ducimus possimus fuga, laudantium, ipsa illo
-                necessitatibus eveniet voluptatem!
-              </p>
-            </div>
-          </div>
-          <div className="w-100"></div>
-          <div className="col-6 col-sm-4 columna">
-            <div className="parrafo2">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam officiis consectetur sint at eveniet
-                accusamus incidunt beatae accusantium nesciunt sed? Doloribus alias omnis corrupti quisquam, in autem
-                nesciunt ea optio.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, officiis recusandae. Inventore, omnis
-                earum est iusto unde, dolorum fugiat ducimus atque, vitae nihil eum. Voluptatum commodi nam eius
-                assumenda fuga.
-              </p>
-            </div>
-          </div>
-          <div className="col-6 col-sm-4 columna-img">
-            <div className="imagen-logo-3">
-              <img className="d-block mx-auto" src={logo} alt="logo" width="300" height="300" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div className="valores">
-        <h3 className="titulo2">Valores</h3>
-        <div className="container-texto">
-          <p className="texto">
-            En <b>Digital Event Hub</b>, nos enorgullece de nuestros valores fundamentales como el profesionalismo
-            y la creatividad. Nos comprometemos a ofrecer experiencias únicas, innovando constantemente en el
-            diseño y ejecución de cada evento. La calidad es nuestra prioridad, garantizando que cada detalle cumpla
-            con las expectativas de nuestros clientes. Fomentamos el trabajo en equipo, colaborando tanto internamente
-            como con nuestros clientes, para asegurar el éxito de cada evento.
-          </p>
-          <p className="texto">
-            Además, valoramos la flexibilidad, adaptándonos a las necesidades y cambios que puedan surgir. Practicamos
-            la sostenibilidad, incorporando métodos ecológicos y responsables en nuestras operaciones. La
-            transparencia es vital para nosotros, manteniendo una comunicación abierta y honesta en todas las etapas
-            del proceso. Estos valores no solo definen nuestra forma de trabajar, sino que también construyen
-            relaciones de confianza y satisfacción a largo plazo con nuestros clientes.
-          </p>
-        </div>
-      </div>
-      <div className="Mision-vision">
-        <h4 className="titulo2">Misión y visión</h4>
-        <div className="row justify-content-center">
-          <div className="col-6 col-sm-3 columna-texto">
-            <div>
-              <p>
-                En <b>Digital Event Hub</b>, nuestra misión es crear experiencias inolvidables a través de la
-                planificación y ejecución de eventos innovadores y personalizados, superando las expectativas de
-                nuestros clientes con un enfoque de calidad, sostenibilidad y colaboración.
-              </p>
-            </div>
-          </div>
-          <div className="col-6 col-sm-3 columna-texto2">
-            <div>
-              <p>
-                Ser líderes en la industria, reconocidos por nuestra creatividad y compromiso con la excelencia,
-                estableciendo nuevos estándares en el diseño de eventos y fomentando relaciones duraderas con nuestros
-                clientes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <footer>
-        <div className="container-info">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-4 text-center">
-              <img src={footerLogo} alt="Logo" width="150" height="150" />
-            </div>
-            <div className="col-12 col-md-4 text-center">
-              <p>&copy; 2024 Digital Event Hub. Todos los derechos reservados.</p>
-            </div>
-            <div className="col-12 col-md-4 text-center">
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-                <img src={twitterXLogo} alt="Twitter Logo" width="30" height="30" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+    );
 };
 
-export default QuienesSomos;
+export default Servicios;
