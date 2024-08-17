@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Navbar from './navbar';
+import NavbarHomeEvent from './NavbarHomeEvent';
 
-const ClientHomeNuevo = () => {
+const HomeEvent = () => {
     const [events, setEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredEvents, setFilteredEvents] = useState([]);
@@ -67,8 +67,8 @@ const ClientHomeNuevo = () => {
 
     return (
         <div>
-            <Navbar />
-            <div style={{ padding: '30px',marginTop: '30px'}}>
+            <NavbarHomeEvent />
+            <div style={{ padding: '30px',marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333', fontSize: '2em', fontWeight: 'bold' }}>Eventos Digital Event Hub:</h1>
 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', position: 'relative' }}>
@@ -89,6 +89,16 @@ const ClientHomeNuevo = () => {
                                 fontSize: '1em'
                             }}
                         />
+                        <FaSearch
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                right: '40px',
+                                transform: 'translateY(-50%)',
+                                color: '#6D3089',
+                                fontSize: '1.2em'
+                            }}
+                        />
                     </div>
                     <button
                         onClick={toggleFilters}
@@ -103,7 +113,7 @@ const ClientHomeNuevo = () => {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginLeft: '-50px',
+                            marginLeft: '10px',
                             fontSize: '1em'
                         }}
                     >
@@ -177,4 +187,4 @@ const ClientHomeNuevo = () => {
     );
 };
 
-export default ClientHomeNuevo;
+export default HomeEvent;

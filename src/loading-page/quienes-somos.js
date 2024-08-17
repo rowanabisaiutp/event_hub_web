@@ -1,135 +1,158 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import './Css/styles.css'; // Asegúrate de que tu CSS esté en esta ruta
 
-// Importa las imágenes
+// Importar imágenes
 import logo from './imagenes/logo-2.png';
+import evento1 from './imagenes/1.jpg';
+import evento2 from './imagenes/2.jpg';
+import evento3 from './imagenes/3.jpg';
 import twitterLogo from './imagenes/Twitter-X-White-Logo-PNG-1.png';
 import footerLogo from './imagenes/logo.jpg';
 
-import './Css/styles.css';
-import './Css/quienes-somos.css';
-import Navbar from './navbar';
+const Inicio = () => {
+  useEffect(() => {
+    // Agregar Font Awesome
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+    document.head.appendChild(link);
 
-const QuienesSomos = () => {
-    return (
-        <div>
+    // Agregar Bootstrap CSS
+    const bootstrapLink = document.createElement('link');
+    bootstrapLink.rel = 'stylesheet';
+    bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+    document.head.appendChild(bootstrapLink);
 
-        <Navbar />
-            {/* Contenido de quienes somos */}
-            <div className="container-quienes-somos">
-                <div className="row justify-content-center">
-                    <div className="col-6 col-sm-3">
-                        <div className="imagen-logo">
-                            <img src={logo} alt="logo" width="300" height="300" />
-                        </div>
-                    </div>
+    return () => {
+      document.head.removeChild(link);
+      document.head.removeChild(bootstrapLink);
+    };
+  }, []);
 
-                    <div className="col-6 col-sm-3">
-                        <div className="seccion-introduccion">
-                            <h1>Introducción</h1>
-                            <p>Somos <b>Digital Event Hub</b>, una empresa dedicada a eventos públicos y privados, donde mezclamos la tecnología y creatividad así como calidad, donde nuestra misión es crear un lugar (<b>plataforma</b>) que permita volver más ágil y dinámico el crear un evento.</p>
-                            <p>Donde creemos que la tecnología es una de las herramientas más poderosas y lo que buscamos es que usted tenga el poder de aprovechar esta ventaja y que sea tu aliado y no tu enemigo, <b>¡y si no sabes nada acerca de la tecnología no te preocupes nosotros mismos te podemos guiar!</b></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-            <div className="historia">
-                <h2 className="titulo">Nuestra Historia</h2>
-                <div className="row justify-content-center">
-                    <div className="col-6 col-sm-4 columna-img">
-                        <div className="imagen-logo-2">
-                            <img className="d-block mx-auto" src={logo} alt="logo" width="300" height="300" />
-                        </div>
-                    </div>
-                    <div className="col-6 col-sm-4 columna">
-                        <div className="parrafo1">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quidem cum amet culpa illum. Itaque eos suscipit perspiciatis quaerat asperiores et at quasi aliquam quisquam. Perferendis tempore velit cumque pariatur?</p>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum at totam dolore nisi eligendi nihil, excepturi molestiae voluptas cumque quidem vitae ducimus possimus fuga, laudantium, ipsa illo necessitatibus eveniet voluptatem!</p>
-                        </div>
-                    </div>
-                    <div className="w-100"></div>
-                    <div className="col-6 col-sm-4 columna">
-                        <div className="parrafo2">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam officiis consectetur sint at eveniet accusamus incidunt beatae accusantium nesciunt sed? Doloribus alias omnis corrupti quisquam, in autem nesciunt ea optio.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, officiis recusandae. Inventore, omnis earum est iusto unde, dolorum fugiat ducimus atque, vitae nihil eum. Voluptatum commodi nam eius assumenda fuga.</p>
-                        </div>
-                    </div>
-                    <div className="col-6 col-sm-4 columna-img">
-                        <div className="imagen-logo-3">
-                            <img className="d-block mx-auto" src={logo} alt="logo" width="300" height="300" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+  useEffect(() => {
+    const moveSlide = (n) => {
+      setCurrentIndex(prevIndex => (prevIndex + n + 3) % 3);
+    };
 
-            <div className="valores">
-                <h3 className="titulo2">Valores</h3>
-                <div className="container-texto">
-                    <p className="texto">En <b>Digital Event Hub</b>, nos enorgullece nuestros valores fundamentales como el profesionalismo y la creatividad. Nos comprometemos a ofrecer experiencias únicas, innovando constantemente en el diseño y ejecución de cada evento. La calidad es nuestra prioridad, garantizando que cada detalle cumpla con las expectativas de nuestros clientes. Fomentamos el trabajo en equipo, colaborando tanto internamente como con nuestros clientes, para asegurar el éxito de cada evento.</p>
-                    <p className="texto">Además, valoramos la flexibilidad, adaptándonos a las necesidades y cambios que puedan surgir. Practicamos la sostenibilidad, incorporando métodos ecológicos y responsables en nuestras operaciones. La transparencia es vital para nosotros, manteniendo una comunicación abierta y honesta en todas las etapas del proceso. Estos valores no solo definen nuestra forma de trabajar, sino que también construyen relaciones de confianza y satisfacción a largo plazo con nuestros clientes.</p>
-                </div>
-            </div>
+    const showSlide = (n) => {
+      const slides = document.querySelectorAll('.carousel-images img');
+      const indicators = document.querySelectorAll('.carousel-indicators span');
 
-            <div className="Mision-vision">
-                <h4 className="titulo2">Misión y visión</h4>
-                <div className="row justify-content-center">
-                    <div className="col-6 col-sm-3 columna-texto">
-                        <div>
-                            <p>En <b>Digital Event Hub</b>, nuestra misión es crear experiencias inolvidables a través de la planificación y ejecución de eventos innovadores y personalizados, superando las expectativas de nuestros clientes con un enfoque de calidad, sostenibilidad y colaboración.</p>
-                        </div>
-                    </div>
-                    <div className="col-6 col-sm-3 columna-texto2">
-                        <div>
-                            <p>Ser líderes en la industria, reconocidos por nuestra creatividad y compromiso con la excelencia, estableciendo nuevos estándares en el diseño de eventos y construyendo relaciones duraderas con nuestros clientes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      slides.forEach((slide, index) => {
+        slide.style.display = 'none';
+        indicators[index].className = '';
+      });
 
-            {/* Footer */}
-            <footer>
-                <div className="container-info">
-                    <div className="row justify-content-center">
-                        <div className="footer-section links col-6 col-sm-3">
-                            <h3>Enlaces</h3>
-                            <ul>
-                                <li><Link to="/inicio">Inicio</Link></li>
-                                <li><Link to="/quienes-somos">¿Quienes Somos?</Link></li>
-                                <li><Link to="/privacidad">Privacidad</Link></li>
-                                <li><Link to="/servicios">Términos y Condiciones</Link></li>
-                            </ul>
-                        </div>
-                        <div className="footer-plataformas col-6 col-sm-3">
-                            <h5>Usa Digital Event Hub en</h5>
-                            <ul>
-                                <li><Link to="/inicio">Android</Link></li>
-                                <li><Link to="/inicio">Iphone</Link></li>
-                                <li><Link to="/inicio">Mac/PC</Link></li>
-                                <li><Link to="/contacto">Digital Event Hub Web</Link></li>
-                            </ul>
-                        </div>
-                        <div className="container-redes col-6 col-sm-3">
-                            <h4>Nuestras Redes Sociales</h4>
-                            <div className="social-icons">
-                                <a className="Facebook" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
-                                <a className="Instagram" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-                                <a className="Twitter-X" href="#" target="_blank" rel="noopener noreferrer">
-                                    <img src={twitterLogo} alt="X Logo" />
-                                </a>
-                                <a className="WhatsApp" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
-                                <a className="Youtube" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i></a>
-                            </div>
-                            <p>© 2024 Digital Event Hub. Todos los derechos reservados.</p>
-                        </div>
-                        <div className="footer-logo col-6 col-sm-3">
-                            <img src={footerLogo} alt="Logo" width="300" height="300" />
-                        </div>
-                    </div>
-                </div>
-            </footer>
+      slides[n].style.display = 'block';
+      indicators[n].className = 'active';
+    };
+
+    showSlide(currentIndex);
+
+    // Cambio automático de diapositivas cada 3 segundos
+    const intervalId = setInterval(() => {
+      moveSlide(1);
+    }, 3000);
+
+    return () => clearInterval(intervalId); // Limpia el intervalo cuando el componente se desmonte
+  }, [currentIndex]);
+
+  return (
+    <div>
+      <header>
+        <div className="logo-container">
+          <img src={logo} alt="Logo" width="140" height="140" />
+          <h1 >Bienvenidos</h1>
         </div>
-    );
+        <nav>
+          <ul>
+            <li><a className="link" href="/">Inicio</a></li>
+            
+            <li><a className="link" href="/quienes-somos">Quienes Somos</a></li>
+            <li><a className="link" href="/servicios">Servicios</a></li>
+            <li><a className="link" href="/contacto">Contacto</a></li>
+            <li><a className="link" href="/cliente">Eventos</a></li>
+            <li><a href="login" className="login-button">Iniciar sesión</a></li>
+            <li><a href="registro" className="login-button">Registrarse</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div className="main-content">
+        <div className="content-wrapper">
+          <h1 className="typewriter-text" id="typewriter">Digital Event <br />Hub</h1>
+          <h2>Divierte en nuestros eventos populares</h2>
+
+          <div className="carousel">
+            <div className="carousel-images">
+              <img src={evento1} alt="Evento 1" width="1000" />
+              <img src={evento2} alt="Evento 2" width="1000" />
+              <img src={evento3} alt="Evento 3" width="1000" />
+            </div>
+            <button className="prev" onClick={() => setCurrentIndex((currentIndex - 1 + 3) % 3)}>&#10094;</button>
+            <button className="next" onClick={() => setCurrentIndex((currentIndex + 1) % 3)}>&#10095;</button>
+            <div className="carousel-indicators">
+              <span className={currentIndex === 0 ? 'active' : ''} onClick={() => setCurrentIndex(0)}></span>
+              <span className={currentIndex === 1 ? 'active' : ''} onClick={() => setCurrentIndex(1)}></span>
+              <span className={currentIndex === 2 ? 'active' : ''} onClick={() => setCurrentIndex(2)}></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div className="container-info">
+          <div className="row justify-content-center">
+            <div className="footer-section links col-6 col-sm-3">
+              <h3>Enlaces</h3>
+              <ul>
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/quienes-somos">¿Quienes Somos?</a></li>
+                <li><a href="/privacidad">Privacidad</a></li>
+                <li><a href="/servicios">Terminos y Condiciones</a></li>
+              </ul>
+            </div>
+            <div className="footer-plataformas col-6 col-sm-3">
+              <h5>Usa Digital Event Hub en</h5>
+              <ul>
+                <li><a href="/inicio">Android</a></li>
+                <li><a href="/inicio">Iphone</a></li>
+                <li><a href="/inicio">Mac/PC</a></li>
+                <li><a href="/contacto">Digital Event Hub Web</a></li>
+              </ul>
+            </div>
+            <div className="container-redes col-6 col-sm-3">
+              <h4>Nuestras Redes Sociales</h4>
+              <div className="social-icons">
+                <a className="Facebook" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+                <a className="Instagram" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+                <a className="Twitter-X" href="#" target="_blank" rel="noopener noreferrer">
+                  <img src={twitterLogo} alt="X Logo" />
+                </a>
+                <a className="WhatsApp" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
+                <a className="Youtube" href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i></a>
+              </div>
+              <p>¡Síguenos en nuestras redes sociales para estar informado!</p>
+            </div>
+          </div>
+          <div className="footer-info-web">
+            <h3>Contacto</h3>
+            <p>Email: contacto@ejemplo.com</p>
+            <p>Teléfono: +34 123 456 789</p>
+            <p>Dirección: Calle Ejemplo 123, Ciudad, País</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="container-logo-footer text-center text-md-left mb-3 mb-md-0">
+            <img className="logo-footer" src={footerLogo} alt="EventHub" width="110" height="110" />
+          </div>
+          <p>2024&copy; Digital Event Hub. Todos los derechos reservados, condiciones y políticas de privacidad.</p>
+        </div>
+      </footer>
+    </div>
+  );
 };
 
-export default QuienesSomos;
+export default Inicio;
