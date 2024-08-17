@@ -3,10 +3,19 @@ import "../../../style.css";
 
 const Header = ({ eventData }) => {
     return (
-        <div className="header">
-            <img src={eventData?.imagen_url || "https://e.radio-grpp.io/normal/2016/08/17/553455_221714.png"} alt="Imagen del evento" />
-            <div className="header-text">
-                {eventData?.evento_nombre || "Consolida tu negocio"} <span className="subtext">Evento {eventData?.tipo_evento || "Evento público"}</span>
+        <div
+            className="headers"
+            style={{
+                backgroundImage: `url(${eventData?.imagen_url || "https://e.radio-grpp.io/normal/2016/08/17/553455_221714.png"})`
+            }}
+        >
+            <div className="header-content">
+                <div className="header-text1">
+                    {eventData?.evento_nombre || "Conferencia de tecnología"}
+                </div>
+                <div className="subtext1">
+                    {`Evento ${eventData?.tipo_evento}` || "Evento Público"}
+                </div>
             </div>
         </div>
     );

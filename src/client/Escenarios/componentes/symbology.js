@@ -11,7 +11,7 @@ const Symbology = () => {
                 <img src={img1} alt="Asiento No disponible" />
             </div>
             <div className="col-9">
-                <span>Available</span>
+                <span style={{color: "black"}}>Available</span>
             </div>
         </div>
         <div className="divider"></div>
@@ -20,7 +20,7 @@ const Symbology = () => {
                 <img src={img2} alt="Asiento Disponible" />
             </div>
             <div className="col-9">
-                <span>Select</span>
+                <span style={{color: "black"}}>Select</span>
             </div>
         </div>
         <div className="divider"></div>
@@ -29,7 +29,7 @@ const Symbology = () => {
                 <img src={img3} alt="Asiento Ocupado" />
             </div>
             <div className="col-9">
-                <span>Not available</span>
+                <span style={{color: "black"}}>Not available</span>
             </div>
         </div>
     </div>

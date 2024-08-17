@@ -51,7 +51,7 @@ const Escenario3 = ({data, setSelectedSeats}) => {
   return (
     <div className="stage-container">
 
-      <div style={{height:"15px", backgroundColor: "#b023b3", width: "620px" }}></div>
+      <div style={{height:"15px", backgroundColor: "#6D3089", width: "650px" }}></div>
       
       <div class="row-flex">
         <div style={{width: "300px", textAlign: "right"}}>

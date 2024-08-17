@@ -40,17 +40,24 @@ const Escenarios = () => {
     };
 
     const handleSubmit = async () => {
+        let user = JSON.parse(localStorage.getItem('user'));
+        let usuarioId = user?.usuario_id;
+        console.log(`Este es el usuario obtenido desde el local storage ${usuarioId}`);
+
         selectedSeats.map(async id => {
             try {
                 const response = await axios.put(
-                    `https://api-digitalevent.onrender.com/api/asientos/${id}`, 
-                    { estado: "Reservado" }
+                    `https://api-digitalevent.onrender.com/api/asientos/${id}`,
+                    {
+                        estado: "Reservado",
+                        usuario_id: usuarioId
+                    }
                 );
                 getData();
             } catch (err) {
                 console.log(err);
             } finally {
-                console.log("GG");
+                console.log("Sucefull");
             }
         });
     };
@@ -65,16 +72,16 @@ const Escenarios = () => {
             <div className="main-container">
                 <div className="content-container">
                     <div className="left-column" style={{ display: "flex" }}>
-                        { !loading && data.forma === "Cuadrado" && <Escenario1 data={data} setSelectedSeats={setSelectedSeats}/> }
-                        { !loading && data.forma === "Triangular" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats}/> }
-                        { !loading && data.forma === "Redondo" && <Escenario4 data={data} setSelectedSeats={setSelectedSeats}/> }
+                        {!loading && data.forma === "Cuadrado" && <Escenario1 data={data} setSelectedSeats={setSelectedSeats} />}
+                        {!loading && data.forma === "Triangular" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats} />}
+                        {!loading && data.forma === "Redondo" && <Escenario4 data={data} setSelectedSeats={setSelectedSeats} />}
                     </div>
                     <div className="right-column">
                         <Symbology />
                     </div>
                 </div>
             </div>
-            <button type="button" className="btn b-rigth" style={{ transform: 'translateY(20%)' }} onClick={handleSubmit}>Continuar</button>
+            <button type="button" className="btn b-rigth" style={{ transform: 'translateY(40%)' }} onClick={handleSubmit}>Seleccionar</button>
         </Fragment>
     );
 }

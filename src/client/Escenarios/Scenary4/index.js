@@ -48,7 +48,7 @@ const Escenario4 = ({data, setSelectedSeats}) => {
   return (
     <div className="stage-container">
 
-      <div style={{height:"15px", backgroundColor: "#b023b3", width: "650px" }}></div>
+      <div style={{height:"15px", backgroundColor: "#6D3089", width: "600px" }}></div>
       
       <div class="row-flex">
         <div style={{width: "300px", textAlign: "right"}}>
@@ -61,7 +61,7 @@ const Escenario4 = ({data, setSelectedSeats}) => {
           ))}
         </div>
         
-        <div class="scenario-square" style={{height: "250px"}}></div>
+        <div class="scenario-square" style={{height: "318px"}}></div>
 
         <div style={{width: "300px", textAlign: "left"}}>
           {seatsRight.map((seatrow, rowIndex) => (
