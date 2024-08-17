@@ -9,7 +9,7 @@ const HomeEvent = () => {
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [showFilters, setShowFilters] = useState(false);
     const [categories, setCategories] = useState([]);
-    const [eventTypes, setEventTypes] = useState([]);
+    const [eventTypes, setEventTypes] = useState(['Publico']); // Establece solo una opción para el tipo de evento, que es "Publico"
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedEventType, setSelectedEventType] = useState('');
 
@@ -17,21 +17,22 @@ const HomeEvent = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Obtén eventos aprobados de la API
         fetch('https://api-digitalevent.onrender.com/api/events/get/approved')
             .then(response => response.json())
             .then(data => {
                 console.log('Datos de eventos:', data);
-                setEvents(data);
-                setFilteredEvents(data);
+                setEvents(data); // Establece los eventos en el estado
+                setFilteredEvents(data); // Inicializa los eventos filtrados con todos los eventos
                 const uniqueCategories = [...new Set(data.map(event => event.categoria))];
-                const uniqueEventTypes = [...new Set(data.map(event => event.tipo_evento))];
-                setCategories(uniqueCategories);
-                setEventTypes(uniqueEventTypes);
+                setCategories(uniqueCategories); // Establece las categorías únicas
+                // Deja eventTypes como está, ya que solo queremos un tipo de evento ("Publico")
             })
             .catch(error => console.error('Error fetching events:', error));
     }, []);
 
     useEffect(() => {
+        // Cierra los filtros si se hace clic fuera de la sección de filtros
         function handleClickOutside(event) {
             if (filterRef.current && !filterRef.current.contains(event.target)) {
                 setShowFilters(false);
@@ -44,6 +45,7 @@ const HomeEvent = () => {
     }, []);
 
     const applyFilters = () => {
+        // Filtra los eventos según el término de búsqueda, la categoría seleccionada y el tipo de evento seleccionado
         setFilteredEvents(
             events.filter(event =>
                 event.evento_nombre.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -54,21 +56,21 @@ const HomeEvent = () => {
     };
 
     useEffect(() => {
-        applyFilters();
+        applyFilters(); // Aplica los filtros cada vez que cambian el término de búsqueda, la categoría, el tipo de evento o los eventos
     }, [searchTerm, selectedCategory, selectedEventType, events]);
 
     const toggleFilters = () => {
-        setShowFilters(prevState => !prevState);
+        setShowFilters(prevState => !prevState); // Alterna la visibilidad de la sección de filtros
     };
 
     const handleEventClick = (eventId) => {
-        navigate(`/evento/${eventId}`);
+        navigate(`/evento/${eventId}`); // Navega a la página del evento seleccionado
     };
 
     return (
         <div>
             <NavbarHomeEvent />
-            <div style={{ padding: '30px',marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
+            <div style={{ padding: '30px', marginTop: '30px', maxWidth: '80%', margin: 'auto', backgroundColor: '#f7f8fa', borderRadius: '8px', boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333', fontSize: '2em', fontWeight: 'bold' }}>Eventos Digital Event Hub:</h1>
 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', position: 'relative' }}>
@@ -145,10 +147,7 @@ const HomeEvent = () => {
                                 onChange={e => setSelectedEventType(e.target.value)}
                                 style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ddd', fontSize: '1em' }}
                             >
-                                <option value="">Todos</option>
-                                {eventTypes.map((type, index) => (
-                                    <option key={index} value={type}>{type}</option>
-                                ))}
+                                <option value="Publico">Publico</option> {/* Solo muestra la opción "Publico" */}
                             </select>
                         </div>
                     </div>
@@ -172,7 +171,6 @@ const HomeEvent = () => {
                             <img
                                 src={event.imagen_url || 'default-image-url.jpg'} // Cambia esto a una imagen por defecto si es necesario
                                 alt={event.evento_nombre}
-
                                 style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '8px' }}
                             />
                             <h2 style={{ margin: '10px 0', fontSize: '1.2em' }}>{event.evento_nombre}</h2>
