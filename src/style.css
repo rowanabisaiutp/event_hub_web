@@ -1,39 +1,51 @@
-/* Escenario 1*/
-.header {
+.headers {
   position: relative;
   width: 100%;
   height: 200px;
-  /* Ajusta la altura según sea necesario */
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 
-.header img {
+.headers img {
+  display: none; 
+}
+
+.headers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-.header-text {
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  /* Espacio desde el borde izquierdo */
-  transform: translateY(-50%);
-  color: white;
-  font-size: 30px;
+.header-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 100%;
+}
+
+.header-text1 {
+  font-size: 50px;
   font-weight: bold;
 }
 
-.subtext {
-  display: inline-block;
-  padding: 3px 17px;
-  background-color: white;
-  color: black;
-  font-size: 12px;
+.subtext1 {
+  background-color: #6D3089;
+  color: white;
+  padding: 3px 15px;
+  font-size: 15px;
   font-weight: normal;
-  transform: translateY(-15%);
+  border-radius: 15px;
 }
+
 
 
 /*----------------------------------------------------Style Fragment-----------------------------------------------------*/
@@ -51,6 +63,7 @@
   max-width: 1200px;
   /* Puedes ajustar esto según sea necesario */
   margin: 0 auto;
+  align-items: center; /* Alinea verticalmente */height: 100%;
 }
 
 .left-column {
@@ -63,24 +76,30 @@
 .right-column {
   flex: 1;
   margin-left: 80px;
+  display: flex;
+  align-items: center; /* Centra verticalmente */height: 100%;
 }
 
 
 /*-----------------------------------------------------Styles seats -----------------------------------------------------------------*/
 
 .seat {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   margin: 3px;
   display: inline-block;
   cursor: pointer;
   text-align: center;
   line-height: 28px;
-  border-radius: 20%;
+  border-radius: 10%;
   transition: background-color 0.3s;
-  border: 1px solid rgb(141, 137, 137);
+  border: 1px solid #d9d9d9;
   color: white;
+  background-color: white;
   position: relative;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+
 }
 
 .seat .seat-id {
@@ -103,7 +122,7 @@
 
 /*Estado no disponible*/
 .seat.Seleccionado {
-  background-color: #EB39EF;
+  background-color: #6D3089;
   border: 0;
 }
 
@@ -141,7 +160,7 @@
   width: 700px;
   /* Ajuste el ancho según sea necesario */
   height: 200px;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   margin-bottom: 20px;
   border-radius: 1px;
   margin: 60px;
@@ -150,7 +169,7 @@
 
 .line {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 5px;
 }
 
@@ -199,7 +218,7 @@
 
 .square_left {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -45px;
@@ -208,7 +227,7 @@
 
 .square2_left {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -90px;
@@ -217,7 +236,7 @@
 
 .square3_left {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -135px;
@@ -227,7 +246,7 @@
 
 .square_right {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -45px;
@@ -236,7 +255,7 @@
 
 .square2_right {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -90px;
@@ -245,7 +264,7 @@
 
 .square3_right {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 30px;
   height: 30px;
   bottom: -135px;
@@ -254,7 +273,7 @@
 
 .base-line {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 620px;
   height: 6px;
   bottom: -40px;
@@ -264,7 +283,7 @@
 
 .bottom-rect {
   position: absolute;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   width: 350px;
   height: 50px;
   bottom: -30px;
@@ -275,16 +294,17 @@
 /*-----------------------------------------------------Styles Simblogia -----------------------------------------------------------------*/
 
 .custom-container {
-  width: 600px;
+  width: 300px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.377);
   background-color: white;
   margin: 80px auto;
   padding: 50px;
+  margin: 0;
 }
 
 .icon1 img {
-  width: 80px;
+  width: 50px;
   /* Tamaño de la imagen ajustado */
   height: auto;
 }
@@ -296,9 +316,9 @@
 
 /* escenario 3 */
 .trapecio {
-  min-width: 600px;
-  height: 260px;
-  background-color: #EB39EF;
+  min-width: 620px;
+  height: 318px;
+  background-color: #6D3089;
   clip-path: polygon(0% 0%, 100% 0%, 82% 100%, 18% 100%);
   position: relative;
 }
@@ -321,7 +341,7 @@
 /* indice */
 .indice {
   max-width: 400px;
-  border: 1px solid #EB39EF;
+  border: 1px solid #6D3089;
   border-radius: 10px;
 }
 
@@ -348,7 +368,7 @@
 .scenario-square {
   min-width: 500px;
   height: 230px;
-  background-color: #EB39EF;
+  background-color: #6D3089;
   margin: 0px 7px;
 }
 
@@ -372,16 +392,29 @@
 .b-rigth {
   position: absolute;
   right: 80px;
-  height: 45px;
-  width: 120px;
-  background-color: #58b60b;
-  color: white;
-
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #6D3089;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease; 
 }
 
 .b-rigth:hover {
-  background-color: #60ca0a;
-  color: white;
+background-color: #fff;
+color: #6D3089;
+border: 2px solid #6D3089;
+box-shadow: 5px 5px 0px #6D3089;
+}
+.b-rigth:active{
+  background-color: #6D3089;
+  box-shadow: none;
+  transform: translateY(4px);
 }
 
 /*Resposive*/

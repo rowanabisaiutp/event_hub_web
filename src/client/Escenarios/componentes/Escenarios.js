@@ -2,14 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../../style.css";
-import Symbology from '../Escenarios/componentes/symbology'
-import Header from '../Escenarios/componentes/header'
-import Escenario1 from '../Escenarios/Scenary1/Index'
-import Escenario3 from '../Escenarios/Scenary3'
-import Escenario4 from '../Escenarios/Scenary4'
+import Symbology from './symbology'
+import Header from './header'
+import Escenario1 from '../Scenary1/Index'
+import Escenario3 from '../Scenary3'
+import Escenario4 from '../Scenary4'
 import axios from 'axios';
 
-const Formulario = () => {
+const Escenarios = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
@@ -40,17 +40,24 @@ const Formulario = () => {
     };
 
     const handleSubmit = async () => {
+        let user = JSON.parse(localStorage.getItem('user'));
+        let usuarioId = user?.usuario_id;
+        console.log(`Este es el usuario obtenido desde el local storage ${usuarioId}`);
+
         selectedSeats.map(async id => {
             try {
                 const response = await axios.put(
-                    `https://api-digitalevent.onrender.com/api/asientos/${id}`, 
-                    { estado: "Reservado" }
+                    `https://api-digitalevent.onrender.com/api/asientos/${id}`,
+                    {
+                        estado: "Reservado",
+                        usuario_id: usuarioId
+                    }
                 );
                 getData();
             } catch (err) {
                 console.log(err);
             } finally {
-                console.log("GG");
+                console.log("Sucefull");
             }
         });
     };
@@ -65,18 +72,19 @@ const Formulario = () => {
             <div className="main-container">
                 <div className="content-container">
                     <div className="left-column" style={{ display: "flex" }}>
-                        { !loading && data.forma === "Cuadrado" && <Escenario1 data={data} setSelectedSeats={setSelectedSeats}/> }
-                        { !loading && data.forma === "Triangular" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats}/> }
-                        { !loading && data.forma === "Redondo" && <Escenario4 data={data} setSelectedSeats={setSelectedSeats}/> }
+                        {!loading && data.forma === "Cuadrado" && <Escenario1 data={data} setSelectedSeats={setSelectedSeats} />}
+                        {!loading && data.forma === "Triangular" && <Escenario3 data={data} setSelectedSeats={setSelectedSeats} />}
+                        {!loading && data.forma === "Redondo" && <Escenario4 data={data} setSelectedSeats={setSelectedSeats} />}
                     </div>
                     <div className="right-column">
                         <Symbology />
                     </div>
                 </div>
             </div>
-            <button type="button" className="btn b-rigth" style={{ transform: 'translateY(20%)' }} onClick={handleSubmit}>Continuar</button>
+            <button type="button" className="btn b-rigth" style={{ transform: 'translateY(40%)' }} onClick={handleSubmit}>Seleccionar</button>
+            
         </Fragment>
     );
 }
 
-export default Formulario;
+export default Escenarios;

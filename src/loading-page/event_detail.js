@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventNavbar from './event_nabvar'; // Asegúrate de que la ruta sea correcta
+import { CircularProgress, Box } from '@mui/material';
 
 const EventDetail = () => {
     const { eventId } = useParams();
@@ -31,7 +32,7 @@ const EventDetail = () => {
     }
 
     if (!event) {
-        return <div>Loading...</div>;
+        return 
     }
 
     return (

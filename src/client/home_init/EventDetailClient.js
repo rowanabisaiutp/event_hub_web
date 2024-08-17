@@ -3,7 +3,7 @@ import { FaSearch, FaFilter } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import ClientNavbarHome from './navbar_home';
 
-const ClientHomeEventNew = () => {
+const HomeEventClient = () => {
     const [events, setEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredEvents, setFilteredEvents] = useState([]);
@@ -215,6 +215,6 @@ const ClientHomeEventNew = () => {
     );
 };
 
-export default ClientHomeEventNew;
+export default HomeEventClient;
 
 // 

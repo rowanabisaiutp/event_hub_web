@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventInformationNavbar from './event_navbar_home'; // Asegúrate de que la ruta sea correcta
+import { CircularProgress, Box } from '@mui/material';
 
-const EventInformation = () => {
+const EventDetailClient = () => {
     const { eventId } = useParams();
     const [event, setEvent] = useState(null);
     const [scenary, setScenary] = useState(null);
@@ -54,7 +55,7 @@ const EventInformation = () => {
     }
 
     if (!event || !scenary) {
-        return <div>Loading...</div>;
+        return 
     }
 
     return (
@@ -74,4 +75,4 @@ const EventInformation = () => {
     );
 };
 
-export default EventInformation;
+export default EventDetailClient;
