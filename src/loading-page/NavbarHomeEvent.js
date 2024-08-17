@@ -6,7 +6,7 @@ const NavbarHomeEvent = () => {
     
     <header>
     <div className="logo-container">
-      <img src={logo} alt="Logo" width="145" height="145" />
+      <img src={logo} alt="Logo" width="100" height="100" />
       <h1 >Eventos</h1>
     </div>
     <nav>
